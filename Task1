@@ -1,0 +1,50 @@
+/**
+ * Реализовать класс-счетчик. Полями класса должны выступать название счетчика и, непосредственно, целочисленный счетчик.
+ * Реализовать для созданного класса конструктор с двумя параметрами, с одним (значение счетчика в таком случае инициализировать как 0),
+ * методы увеличения и уменьшения счетчиков на 1 и на заданное пользователем целое значение. Методы должны возвращать актуальное значение счетчика.
+ * Используя созданный класс, посчитать количество четных и количество нечетных чисел в ряду от 1 до 100. Конечные показатели счетчиков вывести в консоль.
+ * Пример вывода в консоли:
+ * Нечетные числа: 50
+ * Четные числа: 50
+ */
+public class Task1 {
+    public static void main(String[] args) {
+        Counter evenCounter = new Counter("evenCounter");
+        Counter oddCounter = new Counter("oddCounter");
+        for (int i = 0; i < 100; i++) {
+         if(i%2==0){
+             evenCounter.increases();
+         }else {
+             oddCounter.increases();
+         }
+        }
+        System.out.println("Нечетные числа: " + evenCounter.totalizer);
+        System.out.println("Четные числа: " + oddCounter.totalizer);
+    }
+}
+class Counter {
+    String name;
+    int totalizer;
+
+    public Counter(String name, int totalizer) {
+        this.name = name;
+        this.totalizer = totalizer;
+    }
+
+    public Counter(String name) {
+        this(name, 0);
+    }
+    public int increases() {
+        return totalizer++;
+    }
+    public int increases(int value) {
+        return totalizer + value;
+    }
+
+    public int decrease() {
+        return totalizer--;
+    }
+    public int decrease(int value) {
+        return totalizer-value;
+    }
+}
